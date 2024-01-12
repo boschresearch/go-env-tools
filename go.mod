@@ -1,4 +1,4 @@
-module github.boschdevcloud.com/bcai-internal/go-env-tools
+module github.com/boschresearch/go-env-tools
 
 go 1.19
 
