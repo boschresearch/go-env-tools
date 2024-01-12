@@ -1,0 +1,66 @@
+linters:
+  # Supported linters and descriptions can be found via `golangci-lint linters`
+  # or on this website: https://golangci-lint.run/usage/linters/
+  disable-all: true
+  enable:
+    # Enabled by default.
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - stylecheck
+    - typecheck
+    - unused
+    # Additionally enabled ones
+    - exhaustive
+    - funlen
+    - goconst
+    - goheader
+    - goimports
+    - gomnd
+    - gosec
+    - importas
+    - lll
+    - misspell
+    - nestif
+    - prealloc
+    - tagliatelle
+    - revive
+    - dupl
+    - makezero
+
+linters-settings:
+  lll:
+    # Maximum line length. Longer lines will be reported.
+    line-length: 100
+    # Tab width in spaces.
+    tab-width: 4
+  goheader:
+    values:
+    template-path: .goheader-template.txt
+  staticcheck:
+    # Select the Go version to target. The default is '1.13'.
+    go: "1.19"
+    # https://staticcheck.io/docs/options#checks
+    checks: ["all"]
+  stylecheck:
+    # Select the Go version to target. The default is '1.13'.
+    go: "1.19"
+    # https://staticcheck.io/docs/options#checks
+    checks: ["all"]
+  gomnd:
+    settings:
+      mnd:
+        ignored-files: ^.*_(test|mock)\.go$
+
+issues:
+  include:
+    # This setting overrides the default exclude EXC0011 of golangci-lint.
+    # It is necessary to show linting issues of the stylecheck linter.
+    # See https://golangci-lint.run/usage/configuration/#command-line-options
+    # for a list of excludes
+    - EXC0011
+
+output:
+  format: "checkstyle:lint_report.xml,colored-line-number"
