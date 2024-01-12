@@ -37,17 +37,17 @@ jobs:
       fail-fast: false
       matrix:
         go:
-          - 1.18
-          - 1.19
-          - 1.20
-          - 1.21
+          - "1.18"
+          - "1.19"
+          - "1.20"
+          - "1.21"
     name: '1.${{ matrix.go }}.x'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v4
         with:
-          go-version: ${{ matrix.go }}.x
+          go-version: "${{ matrix.go }}.x"
           cache: true
 
       - run: go test -v ./...
